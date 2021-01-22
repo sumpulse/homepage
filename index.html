@@ -1,41 +1,128 @@
-<!doctype html>
+<!DOCTYPE html>
 <html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sumpulse Sounds</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="" />
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
-  <meta property="og:url" content="">
-  <meta property="og:image" content="">
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="apple-touch-icon" href="icon.png" />
+    <!-- Place favicon.ico in the root directory -->
 
-  <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/select.css" />
+    <link rel="stylesheet" href="css/style.css" />
 
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/main.css">
+    <meta name="theme-color" content="#fafafa" />
+  </head>
 
-  <meta name="theme-color" content="#fafafa">
-</head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <img class="logo" src="img/logo.png" />
+        <div class="brand">
+          <b class="strong">s</b>umpulse<b class="strong">s</b>ounds
+        </div>
+        <nav class="menu">
+          <div class="menu-link">
+            <a><b class="strong">h</b>ome</a>
+          </div>
+          <div class="menu-link">
+            <a><b class="strong">m</b>usic</a>
+          </div>
+          <div class="menu-link">
+            <a><b class="strong">a</b>bout</a>
+          </div>
+          <div class="menu-link">
+            <a><b class="strong">c</b>ontact</a>
+          </div>
+        </nav>
+      </header>
+      <main class="main">
+        <section class="filter-bar">
+          <span class="filters">filters:</span>
+          <div class="music-filter select">
+            <select>
+              <option value="Option 1">All Genres</option>
+              <option value="Option 2">Rock</option>
+              <option value="Option 3">Pop</option>
+            </select>
+          </div>
+          <div class="music-filter select">
+            <select>
+              <option value="Option 1">Edit Type</option>
+            </select>
+          </div>
+          <div class="music-filter select">
+            <select>
+              <option value="Option 1">Tempo</option>
+            </select>
+          </div>
+          <div class="music-filter select">
+            <select>
+              <option value="Option 1">Store</option>
+            </select>
+          </div>
+        </section>
 
-<body>
+        <br />
 
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
+        <h3 class="track-title">Before Explosion</h3>
+        <section class="example-player">
+          <span class="track-type">Full</span>
+          <audio class="mejs__player">
+            <source
+              src="https://previews.customer.envatousercontent.com/files/316563288/preview.mp3"
+              type="audio/mpeg"
+            />
+            Your browser does not support the audio element.
+          </audio>
+          <a href="https://audiojungle.net/item/before-explosion/29830357"
+            ><img
+              class="store-logo audiojungle-logo"
+              src="img/audio-jungle-logo-1.webp"
+          /></a>
+        </section>
+      </main>
+    </div>
 
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
-</body>
+    <!-- lodash -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"
+      integrity="sha512-90vH1Z83AJY9DmlWa8WkjkV79yfS2n2Oxhsi2dZbIv0nC4E6m5AbH8Nh156kkM7JePmqD6tcZsfad1ueoaovww=="
+      crossorigin="anonymous"
+    ></script>
 
+    <!-- jQuery is needed for mediaelement :( -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+      integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- mediaelement script and style -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"
+      integrity="sha512-MgxzaA7Bkq7g2ND/4XYgoxUbehuHr3Q/bTuGn4lJkCxfxHEkXzR1Bl0vyCoHhKlMlE2ZaFymsJrRFLiAxQOpPg=="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelementplayer.min.css"
+      integrity="sha512-RZKnkU75qu9jzuyC+OJGffPEsJKQa7oNARCA6/8hYsHk2sd7Sj89tUCWZ+mV4uAaUbuzay7xFZhq7RkKFtP4Dw=="
+      crossorigin="anonymous"
+    />
+
+    <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+    <!-- todo: google analytics -->
+  </body>
 </html>

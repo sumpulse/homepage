@@ -1,0 +1,89 @@
+@font-face {
+  font-family: YiBaiti;
+  src: url("../fonts/ms_yi_baiti.ttf");
+}
+
+.container {
+  width: 1080px;
+  min-height: 100vh;
+  background: black;
+  margin: 0 auto;
+
+  font-family: YiBaiti;
+}
+
+.header {
+  padding-left: 10px;
+  font-size: 31px;
+  letter-spacing: -1.5px;
+
+  display: flex;
+  align-items: center;
+}
+
+.menu {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: space-evenly;
+  height: 52px;
+}
+
+.menu-link a {
+  background: linear-gradient(45deg, rgba(0, 244, 254, 0.5) 0%, rgba(0, 128, 170, 0.4) 16%, black 30%);
+  padding-left: 7px;
+}
+
+.brand {
+  width: 180px;
+  height: 52px;
+}
+
+.logo {
+  width: 47px;
+  margin-right: 8px;
+}
+
+.strong {
+  font-weight: 800;
+}
+
+.main {
+  padding: 30px;
+}
+
+.filter-bar {
+  display: flex;
+}
+
+.filters {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.music-filter {
+  margin: 0 10px;
+  width: 180px;
+}
+
+.store-logo {
+  width: 20px;
+  height: 22px;
+}
+
+.example-player {
+  display: flex;
+  align-items: center;
+}
+
+.track-title {
+  font-size: 22px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.track-type {
+  font-size: 16px;
+  font-weight: bold;
+  padding-bottom: 2px;
+}
