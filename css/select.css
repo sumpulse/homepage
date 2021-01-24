@@ -6,7 +6,7 @@
 
 :root {
   --select-border: #777;
-  --select-focus: blue;
+  --select-focus: lightgrey;
   --select-arrow: var(--select-border);
 }
 
@@ -69,15 +69,11 @@ select::-ms-expand {
 
 /* Custom arrow */
 .select:not(.select--multiple)::after {
-  content: "⌄";
-  font-size: 28px;
-  font-weight: bold;
-  transform: translate3d(8px, -20px, 0);
+  content: url(../img/chevron-down-solid.svg);
+  transform: translateY(-4px);
   justify-self: end;
-  width: 0.8em;
-  height: 0.5em;
-  color: var(--select-arrow);
-  /* clip-path: polygon(100% 0%, 0 0%, 50% 100%); */
+  width: 11px;
+  height: 15px;
 }
 
 /* Interim solution until :focus-within has better support */
