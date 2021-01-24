@@ -71,7 +71,7 @@
   height: 22px;
 }
 
-.example-player {
+.player-container {
   display: flex;
   align-items: center;
 }

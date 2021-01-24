@@ -1,4 +1,4 @@
-{
+var categories = {
   "genres": {
     "ambient": {
       "id": "ambient",
@@ -149,4 +149,4 @@
           "name": "Pond5"
       }
   }
-}
+};

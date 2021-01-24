@@ -1,0 +1,18 @@
+<div class="track-container">
+    <h3 class="track-title"><%= title %></h3>
+    <div class="track-description"><%= description %></div>
+    <div class="player-container">
+        <% _.forEach(editIds, function(editId) {
+            var edit = trackEdits[editId];
+        %>
+            <span class="track-type"><%- edit.type %></span>
+            <audio class="mejs__player">
+              <source src="<%- edit.audioSources[0].url %>" type="<%- edit.audioSources[0].type %>" />
+              Your browser does not support the audio element.
+            </audio>
+            <a href="<%- edit.storeLinks.aj %>">
+                <img class="store-logo audiojungle-logo" src="img/audio-jungle-logo-1.webp" />
+            </a>
+        <% }) %>
+    </div>
+</div>

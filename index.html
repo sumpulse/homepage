@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="css/select.css" />
     <link rel="stylesheet" href="css/style.css" />
 
+    <script src="template/track.html"></script>
+
     <meta name="theme-color" content="#fafafa" />
   </head>
 
@@ -74,22 +76,7 @@
 
         <br />
 
-        <h3 class="track-title">Before Explosion</h3>
-        <section class="example-player">
-          <span class="track-type">Full</span>
-          <audio class="mejs__player">
-            <source
-              src="https://previews.customer.envatousercontent.com/files/316563288/preview.mp3"
-              type="audio/mpeg"
-            />
-            Your browser does not support the audio element.
-          </audio>
-          <a href="https://audiojungle.net/item/before-explosion/29830357"
-            ><img
-              class="store-logo audiojungle-logo"
-              src="img/audio-jungle-logo-1.webp"
-          /></a>
-        </section>
+        <div id="asd"></div>
       </main>
     </div>
 
@@ -120,6 +107,40 @@
       crossorigin="anonymous"
     />
 
+    <!-- import the data as js O.o -->
+    <script src="data/category.js"></script>
+    <script src="data/tracks.js"></script>
+
+    <!-- templates for generating tracklist -->
+    <script id="track-template" type="text/jst">
+      <div class="track-container">
+        <h3 class="track-title"><%= title %></h3>
+        <div class="track-description"><%= description %></div>
+        <div class="player-list">
+            <% _.forEach(editIds, function(editId) {
+                var edit = trackEdits[editId];
+            %>
+              <div class="player-container">
+                <span class="track-type"><%- edit.type %></span>
+                <audio class="mejs__player">
+                  <source src="<%- edit.audioSources[0].url %>" type="<%- edit.audioSources[0].type %>" />
+                  Your browser does not support the audio element.
+                </audio>
+                <a href="<%- edit.storeLinks.aj %>">
+                    <img class="store-logo audiojungle-logo" src="img/audio-jungle-logo-1.webp" />
+                </a>
+              </div>
+            <% }) %>
+        </div>
+    </div>
+    </script>
+    <script id="tracklist-template" type="text/jst">
+      <div class="tracklist-container">
+        <% _.forEach(tracks, function(track) { renderTrack(track) }) %>
+      </div>
+    </script>
+
+    <!-- main scripts -->
     <script src="js/vendor/modernizr-3.11.2.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
