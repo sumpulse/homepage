@@ -1,0 +1,9 @@
+@font-face {
+  font-family: YiBaiti;
+  src: url("../../fonts/ms_yi_baiti.ttf");
+}
+
+body {
+  background: linear-gradient(rgb(0, 244, 254), rgb(0,128,170)) no-repeat;
+  color: white;
+}
