@@ -11,7 +11,7 @@ const useStyles = createUseStyles({
     minHeight: "100vh",
     background: "black",
     margin: [[0, "auto"]],
-    fontFamily: "YiBaiti",
+    fontFamily: "Roboto, sans",
   },
 });
 

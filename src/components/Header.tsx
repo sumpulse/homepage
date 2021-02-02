@@ -2,8 +2,11 @@ import React from "react";
 import { createUseStyles } from "react-jss";
 import Menu from "./Menu";
 
-const headerFontSize = 32;
-const logoSize = headerFontSize * 1.5;
+// @ts-ignore
+import logo from "../../images/logo.png";
+
+const headerFontSize = 24;
+const logoSize = headerFontSize * 2;
 
 const useStyles = createUseStyles({
   brand: {
@@ -17,7 +20,8 @@ const useStyles = createUseStyles({
   header: {
     paddingLeft: 10,
     fontSize: headerFontSize,
-    letterSpacing: -1.5,
+    fontWeight: 300,
+    letterSpacing: -0.5,
     display: "flex",
     alignItems: "center",
   },
@@ -27,7 +31,7 @@ const Header = () => {
   const classes = useStyles();
   return (
     <header className={classes.header}>
-      <img className={classes.logo} src="/images/logo.png" />
+      <img className={classes.logo} src={logo} />
       <div className={classes.brand}>
         <span>
           <b>s</b>umpulse<b>s</b>ounds

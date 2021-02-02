@@ -7,15 +7,12 @@ import chroma from "chroma-js";
 const useStyles = createUseStyles({
   filterBar: {
     display: "flex",
-    fontFamily: "sans",
     fontWeight: "normal",
     alignItems: "center",
   },
   filters: {
-    fontFamily: "YiBaiti",
     textTransform: "uppercase",
-    fontWeight: "bold",
-    fontSize: 18,
+    fontSize: 14,
   },
 });
 
@@ -49,27 +46,33 @@ const mapTheme = (theme) => ({
     neutral80: neutralColor.brighten(5).css(),
     neutral90: neutralColor.brighten(5).css(),
   },
+  spacing: {
+    baseUnit: 2,
+    menuGutter: 2,
+    controlHeight: 24
+  }
 });
 
 const selectStyles = {
   container: (styles) => ({
     ...styles,
     borderColor: highlightColor,
-    flex: "0 0 40%",
-    margin: "0 2.5%"
+    flex: "0 0 120px",
+    margin: "0 20px"
   }),
   control: (styles) => ({
     ...styles,
     border: "none",
     borderRadius: 0,
     fontSize,
+    fontWeight: 400
   }),
   placeholder: (styles) => ({
     ...styles,
   }),
-  multiValueLabel: (styles) => ({
+  dropdownIndicator: (styles) => ({
     ...styles,
-    fontSize,
+    width: 24,
   }),
   indicatorSeparator: () => ({
     display: "none",
@@ -78,22 +81,17 @@ const selectStyles = {
     ...styles,
     fontSize,
   }),
-  option: (styles, { data, isDisabled, isFocused, isSelected }) => ({
-    ...styles,
-    // backgroundColor: isDisabled
-    //   ? null
-    //   : isSelected
-    //   ? highlightColor
-    //   : isFocused
-    //   ? highlightColor
-    //   : null,
-  }),
 };
 
 const genreOptions = Object.values(categories.genres).map((genre) => ({
   value: genre.id,
   label: genre.name,
 }));
+
+genreOptions.unshift({
+  value: null,
+  label: "All Genres"
+});
 
 const storeOptions = Object.values(categories.stores).map((store) => ({
   value: store.id,
@@ -106,7 +104,14 @@ const FilterBar = () => {
     <div className={classes.filterBar}>
       <div className={classes.filters}>filters:</div>
       <Select
-        isMulti
+        isClearable={false}
+        styles={selectStyles}
+        theme={mapTheme}
+        options={genreOptions}
+        placeholder="Select Genre.."
+        defaultValue={"dubstep"}
+      />
+      <Select
         isClearable={false}
         styles={selectStyles}
         theme={mapTheme}
@@ -114,7 +119,6 @@ const FilterBar = () => {
         placeholder="Select Genre.."
       />
       <Select
-        isMulti
         styles={selectStyles}
         theme={mapTheme}
         options={storeOptions}
