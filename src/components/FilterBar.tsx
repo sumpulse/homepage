@@ -49,8 +49,8 @@ const mapTheme = (theme) => ({
   spacing: {
     baseUnit: 2,
     menuGutter: 2,
-    controlHeight: 24
-  }
+    controlHeight: 24,
+  },
 });
 
 const selectStyles = {
@@ -58,14 +58,14 @@ const selectStyles = {
     ...styles,
     borderColor: highlightColor,
     flex: "0 0 120px",
-    margin: "0 20px"
+    margin: "0 20px",
   }),
   control: (styles) => ({
     ...styles,
     border: "none",
     borderRadius: 0,
     fontSize,
-    fontWeight: 400
+    fontWeight: 400,
   }),
   placeholder: (styles) => ({
     ...styles,
@@ -83,20 +83,40 @@ const selectStyles = {
   }),
 };
 
-const genreOptions = Object.values(categories.genres).map((genre) => ({
-  value: genre.id,
-  label: genre.name,
-}));
-
-genreOptions.unshift({
-  value: null,
-  label: "All Genres"
+const categoryToOption = (category) => ({
+  value: category.id,
+  label: category.name,
 });
 
-const storeOptions = Object.values(categories.stores).map((store) => ({
-  value: store.id,
-  label: store.name,
-}));
+const genreOptions = Object.values(categories.genres).map(categoryToOption);
+const storeOptions = Object.values(categories.stores).map(categoryToOption);
+const tempoOptions = Object.values(categories.tempos).map(categoryToOption);
+const moodOptions = Object.values(categories.moods).map(categoryToOption);
+
+const allGenres = {
+  value: null,
+  label: "All Genres",
+};
+
+const allTempos = {
+  value: null,
+  label: "All Tempos",
+};
+
+const allMoods = {
+  value: null,
+  label: "All Moods",
+};
+
+const allStores = {
+  value: null,
+  label: "All Stores",
+};
+
+genreOptions.unshift(allGenres);
+tempoOptions.unshift(allTempos);
+moodOptions.unshift(allMoods);
+storeOptions.unshift(allStores);
 
 const FilterBar = () => {
   const classes = useStyles();
@@ -108,21 +128,27 @@ const FilterBar = () => {
         styles={selectStyles}
         theme={mapTheme}
         options={genreOptions}
-        placeholder="Select Genre.."
-        defaultValue={"dubstep"}
+        defaultValue={allGenres}
       />
       <Select
         isClearable={false}
         styles={selectStyles}
         theme={mapTheme}
-        options={genreOptions}
-        placeholder="Select Genre.."
+        options={tempoOptions}
+        defaultValue={allTempos}
+      />
+      <Select
+        isClearable={false}
+        styles={selectStyles}
+        theme={mapTheme}
+        options={moodOptions}
+        defaultValue={allMoods}
       />
       <Select
         styles={selectStyles}
         theme={mapTheme}
         options={storeOptions}
-        placeholder="Store.."
+        defaultValue={allStores}
       />
     </div>
   );
