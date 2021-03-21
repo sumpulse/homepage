@@ -13,12 +13,15 @@
     "gatsby-source-filesystem": "^2.5.0",
     "gatsby-transformer-sharp": "^2.6.0",
     "jss": "^10.5.1",
+    "mediaelement": "^4.2.16",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
     "react-jss": "^10.5.1",
-    "react-select": "^4.0.2"
+    "react-player": "^2.8.2",
+    "react-select": "^4.0.2",
+    "react-soundplayer": "^1.0.5"
   },
   "devDependencies": {
     "gh-pages": "^3.1.0",
