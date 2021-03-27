@@ -1,5 +1,9 @@
 const categories = {
   genres: {
+    abstract: {
+      id: "abstract",
+      name: "Abstract",
+    },
     ambient: {
       id: "ambient",
       name: "Ambient/Chill",
@@ -16,6 +20,14 @@ const categories = {
       id: "electro",
       name: "Electronic",
     },
+    funk: {
+      id: "funk",
+      name: "Funk",
+    },
+    glitch: {
+      id: "glitch",
+      name: "Glitch-Hop",
+    },
     hiphop: {
       id: "hiphop",
       name: "Hip-Hop",
@@ -28,9 +40,25 @@ const categories = {
       id: "jazz",
       name: "Jazz",
     },
+    percussion: {
+      id: "percussion",
+      name: "Percussion",
+    },
+    pop: {
+      id: "pop",
+      name: "Pop",
+    },
+    rock: {
+      id: "rock",
+      name: "Rock",
+    },
     trap: {
       id: "trap",
       name: "Trap",
+    },
+    trance: {
+      id: "trance",
+      name: "Trance",
     },
     world: {
       id: "world",
@@ -43,36 +71,36 @@ const categories = {
       id: "vs",
       name: "Very Slow",
       minBpm: null,
-      maxBpm: "60",
+      maxBpm: 60,
     },
     slow: {
       id: "slow",
       name: "Slow",
-      minBpm: "60",
-      maxBpm: "90",
+      minBpm: 60,
+      maxBpm: 90,
     },
     medium: {
       id: "medium",
       name: "Medium",
-      minBpm: "90",
-      maxBpm: "110",
+      minBpm: 90,
+      maxBpm: 110,
     },
     upbeat: {
       id: "upbeat",
       name: "Upbeat",
-      minBpm: "110",
-      maxBpm: "140",
+      minBpm: 110,
+      maxBpm: 140,
     },
     fast: {
       id: "fast",
       name: "Fast",
-      minBpm: "140",
-      maxBpm: "160",
+      minBpm: 140,
+      maxBpm: 160,
     },
     vf: {
       id: "vf",
       name: "Very Fast",
-      minBpm: "160",
+      minBpm: 160,
       maxBpm: null,
     },
   },

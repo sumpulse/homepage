@@ -3,23 +3,34 @@ import ReactPlayer from "react-player";
 import { createUseStyles, Styles } from "react-jss";
 import Play from "./icons/Play";
 import Pause from "./icons/Pause";
+import VolumeUp from "./icons/VolumeUp";
+import Mute from "./icons/Mute";
 
 const playerElementMargin = [["auto", 5]];
+
+const buttonStyle = {
+  flex: [[0, 0, "auto"]],
+  width: 12,
+  border: "none",
+  margin: playerElementMargin,
+  padding: 0,
+  paddingTop: 2,
+  background: "transparent",
+};
 
 const useStyles = createUseStyles({
   player: {
     display: "flex",
     width: "100%",
     height: 28,
-    border: "1px solid red",
+    // border: "1px solid red",
   },
   playButton: {
-    flex: [[0, 0, "auto"]],
-    width: 12,
-    border: "none",
-    margin: playerElementMargin,
-    padding: 0,
-    background: "transparent",
+    ...buttonStyle,
+  },
+  volumeButton: {
+    ...buttonStyle,
+    width: 16, // the waves take up a lot of space but the speaker icon is small in comparison
   },
   timer: {
     flex: [[0, 0, "auto"]],
@@ -70,11 +81,20 @@ const useStyles = createUseStyles({
   },
 });
 
+const Timer = ({ seconds, className = "" }) => (
+  <div className={className}>
+    {Math.floor(seconds / 60)}:{("0" + Math.floor(seconds % 60)).slice(-2)}
+  </div>
+);
+
 const MusicPlayer = ({ urls }) => {
   const classes = useStyles();
   const player = useRef(null);
   const [played, setPlayed] = useState(0);
+  const [playedSeconds, setPlayedSeconds] = useState(0);
+  const [durationSeconds, setDurationSeconds] = useState(0);
   const [volume, setVolume] = useState(0.5);
+  const [isMuted, setMuted] = useState(false);
   const [isPlaying, setPlaying] = useState(false);
   const [isSeeking, setSeeking] = useState(false);
 
@@ -89,7 +109,11 @@ const MusicPlayer = ({ urls }) => {
             return;
           }
           setPlayed(state.played);
+          setPlayedSeconds(state.playedSeconds);
         }}
+        onSeek={(sec) => setPlayedSeconds(sec)}
+        onDuration={(sec) => setDurationSeconds(sec)}
+        muted={isMuted}
         volume={volume}
         width={0}
         height={0}
@@ -101,7 +125,7 @@ const MusicPlayer = ({ urls }) => {
       >
         {isPlaying ? <Pause fill="white" /> : <Play fill="white" />}
       </button>
-      <div className={classes.timer}>00:00</div>
+      <Timer className={classes.timer} seconds={playedSeconds} />
       <div className={classes.progressBar}>
         <div
           className={classes.progressBand}
@@ -126,13 +150,20 @@ const MusicPlayer = ({ urls }) => {
           />
         </div>
       </div>
-      <div className={classes.timer}>00:00</div>
+      <Timer className={classes.timer} seconds={durationSeconds} />
+      <button
+        className={classes.volumeButton}
+        title="Volume/Mute"
+        onClick={() => setMuted(!isMuted)}
+      >
+        {isMuted ? <Mute fill="white" /> : <VolumeUp fill="white" />}
+      </button>
       <div className={classes.volumeBar}>
+        <div
+          className={classes.volumeBand}
+          style={{ width: `${volume * 100}%` }}
+        />
         <div className={classes.rangeWrapper}>
-          <div
-            className={classes.volumeBand}
-            style={{ width: `${volume * 100}%` }}
-          />
           <input
             className={classes.rangeBar}
             type="range"

@@ -57,8 +57,8 @@ const selectStyles = {
   container: (styles) => ({
     ...styles,
     borderColor: highlightColor,
-    flex: "0 0 120px",
-    margin: "0 20px",
+    flex: "0 0 200px",
+    margin: "0 10px",
   }),
   control: (styles) => ({
     ...styles,
