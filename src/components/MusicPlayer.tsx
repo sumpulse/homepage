@@ -16,6 +16,7 @@ const buttonStyle = {
   padding: 0,
   paddingTop: 2,
   background: "transparent",
+  cursor: "pointer",
 };
 
 const useStyles = createUseStyles({
@@ -37,6 +38,7 @@ const useStyles = createUseStyles({
     fontWeight: 700,
     fontSize: 11,
     margin: playerElementMargin,
+    userSelect: "none",
   },
   rangeWrapper: {
     left: -8,
@@ -81,6 +83,17 @@ const useStyles = createUseStyles({
   },
 });
 
+/**
+ * Whenever we click on a button that starts playing a track,
+ * we want to make sure that no other tracks are playing.
+ */
+function pauseAllAudio() {
+  const audios = document.getElementsByTagName("audio");
+  Array.from(audios).forEach((audio) => {
+    audio.pause();
+  });
+}
+
 const Timer = ({ seconds, className = "" }) => (
   <div className={className}>
     {Math.floor(seconds / 60)}:{("0" + Math.floor(seconds % 60)).slice(-2)}
@@ -105,12 +118,22 @@ const MusicPlayer = ({ urls }) => {
         playing={isPlaying}
         url={urls}
         onProgress={(state) => {
+          // Seeking means the user is currently grabbing the range input, which, in our case,
+          // is the same bar that indicates progress. We don't want to update it because the
+          // input would jump unexpectedly to the current progress.
           if (isSeeking) {
+            return;
+          }
+          // When media has just been paused recently, there might be a progress update left,
+          // but that would move the progress bar and the timer/counter, so we exclude that case.
+          // The player will pick up the progress fine the next time when it updates.
+          if (!isPlaying) {
             return;
           }
           setPlayed(state.played);
           setPlayedSeconds(state.playedSeconds);
         }}
+        onPause={() => setPlaying(false)}
         onSeek={(sec) => setPlayedSeconds(sec)}
         onDuration={(sec) => setDurationSeconds(sec)}
         muted={isMuted}
@@ -121,7 +144,13 @@ const MusicPlayer = ({ urls }) => {
       <button
         className={classes.playButton}
         title="Play/Pause"
-        onClick={() => setPlaying(!isPlaying)}
+        onClick={() => {
+          const play = !isPlaying;
+          if (play) {
+            pauseAllAudio();
+          }
+          setPlaying(play);
+        }}
       >
         {isPlaying ? <Pause fill="white" /> : <Play fill="white" />}
       </button>
