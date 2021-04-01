@@ -40,20 +40,20 @@ type FilterData = Record<FilterType, string>;
 function filterTracklist(filters: FilterData): Track[] {
   let filteredTracks = tracklist;
   if (filters[FilterType.Genre]) {
-    filteredTracks = tracklist.filter((track) =>
+    filteredTracks = filteredTracks.filter((track) =>
       // at least one of the track's genres is the selected
       track.genres.includes(filters[FilterType.Genre])
     );
   }
   if (filters[FilterType.Tempo]) {
     const tempo = tempos[filters[FilterType.Tempo]];
-    filteredTracks = tracklist.filter(
+    filteredTracks = filteredTracks.filter(
       // track is in the selected BPM range
-      (track) => tempo.minBpm < track.bpm && tempo.maxBpm > track.bpm
+      (track) => tempo.minBpm <= track.bpm && tempo.maxBpm > track.bpm
     );
   }
   if (filters[FilterType.Store]) {
-    filteredTracks = tracklist.filter((track) =>
+    filteredTracks = filteredTracks.filter((track) =>
       track.edits.some((edit) =>
         // at least version of the track is available at the selected store
         Object.keys(edit.storeLinks).includes(filters[FilterType.Store])
