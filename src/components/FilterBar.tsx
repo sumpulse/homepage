@@ -118,7 +118,7 @@ tempoOptions.unshift(allTempos);
 moodOptions.unshift(allMoods);
 storeOptions.unshift(allStores);
 
-const FilterBar = () => {
+const FilterBar = ({ onSelectChange }) => {
   const classes = useStyles();
   return (
     <div className={classes.filterBar}>
@@ -129,6 +129,7 @@ const FilterBar = () => {
         theme={mapTheme}
         options={genreOptions}
         defaultValue={allGenres}
+        onChange={(...args) => onSelectChange("genre", ...args)}
       />
       <Select
         isClearable={false}
@@ -136,6 +137,7 @@ const FilterBar = () => {
         theme={mapTheme}
         options={tempoOptions}
         defaultValue={allTempos}
+        onChange={(...args) => onSelectChange("tempo", ...args)}
       />
       <Select
         isClearable={false}
@@ -143,12 +145,14 @@ const FilterBar = () => {
         theme={mapTheme}
         options={moodOptions}
         defaultValue={allMoods}
+        onChange={(...args) => onSelectChange("mood", ...args)}
       />
       <Select
         styles={selectStyles}
         theme={mapTheme}
         options={storeOptions}
         defaultValue={allStores}
+        onChange={(...args) => onSelectChange("store", ...args)}
       />
     </div>
   );
