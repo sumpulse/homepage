@@ -70,7 +70,7 @@ const categories = {
     vs: {
       id: "vs",
       name: "Very Slow",
-      minBpm: null,
+      minBpm: 0,
       maxBpm: 60,
     },
     slow: {
@@ -101,7 +101,7 @@ const categories = {
       id: "vf",
       name: "Very Fast",
       minBpm: 160,
-      maxBpm: null,
+      maxBpm: 1000,
     },
   },
 
@@ -191,20 +191,20 @@ const categories = {
   },
 
   stores: {
-    aj: {
-      id: "aj",
+    audioJungle: {
+      id: "audioJungle",
       name: "AudioJungle",
     },
-    me: {
-      id: "me",
+    motionElements: {
+      id: "motionElements",
       name: "MotionElements",
     },
-    mg: {
-      id: "mg",
+    musicGrid: {
+      id: "musicGrid",
       name: "MusicGrid",
     },
-    p5: {
-      id: "p5",
+    pond5: {
+      id: "pond5",
       name: "Pond5",
     },
   },

@@ -1,6 +1,7 @@
 import React from "react";
 import MusicPlayer from "./MusicPlayer";
 import { createUseStyles } from "react-jss";
+import { TrackEdit } from "../types";
 
 // @ts-ignore (importing image with the help of gatsby-source-filesystem)
 import audioJungleLogo from "../../images/audio-jungle-logo-1.webp";
@@ -31,14 +32,6 @@ const useStyles = createUseStyles({
     marginLeft: 5,
   },
 });
-
-type TrackEdit = {
-  type: string;
-  audioSources: Array<{ url: string; type: string }>;
-  storeLinks: {
-    audioJungle: string;
-  };
-};
 
 interface Props {
   title: string;

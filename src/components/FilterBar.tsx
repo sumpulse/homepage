@@ -139,14 +139,14 @@ const FilterBar = ({ onSelectChange }) => {
         defaultValue={allTempos}
         onChange={(...args) => onSelectChange("tempo", ...args)}
       />
-      <Select
+      {/* <Select
         isClearable={false}
         styles={selectStyles}
         theme={mapTheme}
         options={moodOptions}
         defaultValue={allMoods}
         onChange={(...args) => onSelectChange("mood", ...args)}
-      />
+      /> */}
       <Select
         styles={selectStyles}
         theme={mapTheme}
