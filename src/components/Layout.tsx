@@ -4,7 +4,7 @@ import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
   main: {
-    padding: 30,
+    padding: [[30, 30, 100]],
   },
   container: {
     width: 1080,

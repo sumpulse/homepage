@@ -1,10 +1,14 @@
 import React, { FC, useState } from "react";
+import Select from "react-select";
 import FilterBar from "../components/FilterBar";
 import Layout from "../components/Layout";
 import TrackEntry from "../components/TrackEntry";
 import { tracks, trackEdits } from "../../data/tracks";
-import { FilterType, Track, TrackEdit } from "../types";
+import { FilterType, Track } from "../types";
 import categories from "../../data/categories";
+import Pager from "../components/Pager";
+import { createUseStyles } from "react-jss";
+import { createSelectStyles, createThemeMapper } from "../selectConfig";
 
 const tracklist: Track[] = Object.keys(tracks).map((id) => {
   const track = tracks[id];
@@ -55,7 +59,7 @@ function filterTracklist(filters: FilterData): Track[] {
   if (filters[FilterType.Store]) {
     filteredTracks = filteredTracks.filter((track) =>
       track.edits.some((edit) =>
-        // at least version of the track is available at the selected store
+        // at least one version of the track is available at the selected store
         Object.keys(edit.storeLinks).includes(filters[FilterType.Store])
       )
     );
@@ -63,22 +67,71 @@ function filterTracklist(filters: FilterData): Track[] {
   return filteredTracks;
 }
 
+const selectStyles = createSelectStyles("50px");
+const mapTheme = createThemeMapper();
+
+const pageSizeOptions = [
+  { value: 10, label: 10 },
+  { value: 20, label: 20 },
+  { value: 50, label: 50 },
+];
+
+const useStyles = createUseStyles({
+  pagerContainer: {
+    fontSize: 13,
+    display: "flex",
+    justifyContent: "space-between",
+    marginTop: 36,
+  },
+  pagerOptions: {
+    display: "flex",
+    alignItems: "center"
+  }
+});
+
 const Music: FC = () => {
+  const classes = useStyles();
+  const [page, setPage] = useState(0);
+  const [pageSize, setPageSize] = useState(10);
   const [filters, setFilters] = useState({} as FilterData);
+  const [filteredTracks, setFilteredTracks] = useState(tracklist);
   const onSelectChange = (selectId, selectedData, actionData) => {
     if (actionData.action === "select-option") {
-      setFilters({
+      const newFilters = {
         ...filters,
         [selectId]: selectedData.value,
-      });
+      };
+      setFilters(newFilters);
+      setFilteredTracks(filterTracklist(newFilters));
+      setPage(0);
     }
   };
   return (
     <Layout>
       <FilterBar onSelectChange={onSelectChange} />
-      {filterTracklist(filters).map((track) => (
+      {filteredTracks.slice(page * pageSize, (page + 1) * pageSize).map((track) => (
         <TrackEntry key={track.id} {...track} />
       ))}
+      <div className={classes.pagerContainer}>
+        <div className={classes.pagerOptions}>
+          Show
+          <Select
+            isClearable={false}
+            styles={selectStyles}
+            theme={mapTheme}
+            options={pageSizeOptions}
+            defaultValue={pageSizeOptions[0]}
+            onChange={(selectedData, actionData) => {
+              if (actionData.action === "select-option") {
+                setPageSize(selectedData.value);
+                setPage(0);
+              }
+            }}
+          />
+          products
+        </div>
+        <Pager pageCount={Math.max(Math.ceil(filteredTracks.length / pageSize), 1)} currentPage={page} onPagination={setPage} />
+      </div>
     </Layout>
   );
 };
