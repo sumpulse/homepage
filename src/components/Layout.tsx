@@ -12,6 +12,7 @@ const useStyles = createUseStyles({
     background: "black",
     margin: [[0, "auto"]],
     fontFamily: "Roboto, sans",
+    boxShadow: [[0, 0, 3, 0, "rgb(0,0,0,0.5)"]],
   },
 });
 

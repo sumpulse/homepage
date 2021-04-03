@@ -5,6 +5,9 @@ import { createUseStyles } from "react-jss";
 const buttonStyle = {
   margin: [[5, 10]],
   cursor: "pointer",
+  // '&:hover': {
+  //   border: "1px solid white"
+  // }
 };
 
 const useStyles = createUseStyles({
@@ -15,7 +18,7 @@ const useStyles = createUseStyles({
   pageButton: buttonStyle,
   currentPageButton: {
     ...buttonStyle,
-    fontWeight: 700,
+    borderBottom: "1px solid white",
   },
   inactivePageButton: {
     ...buttonStyle,
@@ -51,10 +54,7 @@ const Pager: FC<Props> = ({ pageCount, currentPage, onPagination }) => {
         <a
           key={i}
           className={currentPage === i ? classes.currentPageButton : classes.pageButton}
-          onClick={() => {
-            onPagination(i);
-            scrollTo({ top: 0 });
-          }}
+          onClick={() => onPagination(i)}
         >
           {i + 1}
         </a>

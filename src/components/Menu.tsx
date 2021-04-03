@@ -12,6 +12,7 @@ const useStyles = createUseStyles({
   menuLink: {
     color: "white",
     textDecoration: "none",
+    outline: "none",
     background:
       "linear-gradient(45deg, rgba(0, 244, 254, 0.5) 0%, rgba(0, 128, 170, 0.4) 16%, black 30%)",
     paddingLeft: 7,
