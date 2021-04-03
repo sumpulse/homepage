@@ -14,8 +14,15 @@ module.exports = {
         path: `${__dirname}/images`,
       },
     },
+    {
+      resolve: `gatsby-plugin-force-trailing-slashes`,
+      options: {
+        excludedPaths: [`/404.html`],
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-jss`,
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {
