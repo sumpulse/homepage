@@ -9,6 +9,7 @@ import categories from "../../data/categories";
 import Pager from "../components/Pager";
 import { createUseStyles } from "react-jss";
 import { createSelectStyles, createThemeMapper } from "../selectConfig";
+import Helmet from "react-helmet";
 
 const tracklist: Track[] = Object.keys(tracks).map((id) => {
   const track = tracks[id];
@@ -85,8 +86,11 @@ const useStyles = createUseStyles({
   },
   pagerOptions: {
     display: "flex",
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
+  emptyMessage: {
+    margin: [[30, 0]],
+  },
 });
 
 const Music: FC = () => {
@@ -108,10 +112,17 @@ const Music: FC = () => {
   };
   return (
     <Layout>
+      <Helmet>
+        <title>Music – Sumpulse Sounds</title>
+      </Helmet>
       <FilterBar onSelectChange={onSelectChange} />
-      {filteredTracks.slice(page * pageSize, (page + 1) * pageSize).map((track) => (
-        <TrackEntry key={track.id} {...track} />
-      ))}
+      {filteredTracks.length === 0 ? (
+        <p className={classes.emptyMessage}>No results.</p>
+      ) : (
+        filteredTracks
+          .slice(page * pageSize, (page + 1) * pageSize)
+          .map((track) => <TrackEntry key={track.id} {...track} />)
+      )}
       <div className={classes.pagerContainer}>
         <div className={classes.pagerOptions}>
           Show
@@ -130,7 +141,14 @@ const Music: FC = () => {
           />
           products
         </div>
-        <Pager pageCount={Math.max(Math.ceil(filteredTracks.length / pageSize), 1)} currentPage={page} onPagination={setPage} />
+        <Pager
+          pageCount={Math.max(Math.ceil(filteredTracks.length / pageSize), 1)}
+          currentPage={page}
+          onPagination={(pageNumber: number) => {
+            setPage(pageNumber);
+            scrollTo({ top: 0 });
+          }}
+        />
       </div>
     </Layout>
   );
