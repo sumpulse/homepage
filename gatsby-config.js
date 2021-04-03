@@ -23,17 +23,17 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-jss`,
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `sumpulse-sounds`,
-    //     short_name: `sumpulse`,
-    //     start_url: `/`,
-    //     // background_color: `#663399`,
-    //     // theme_color: `#663399`,
-    //     // display: `minimal-ui`,
-    //     // icon: `src/images/logo.png`, // This path is relative to the root of the site.
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `sumpulse-sounds`,
+        short_name: `sumpulse`,
+        start_url: `/`,
+        // background_color: `#663399`,
+        // theme_color: `#663399`,
+        // display: `minimal-ui`,
+        icon: `images/favicon.png`, // This path is relative to the root of the site.
+      },
+    },
   ],
 };
