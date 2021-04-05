@@ -3,9 +3,23 @@
   src: url("../../fonts/ms_yi_baiti.ttf");
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
 
 body {
-  background: linear-gradient(rgb(0, 244, 254), rgb(0,128,170)) no-repeat fixed;
+  background: linear-gradient(rgb(0, 244, 254), rgb(0, 128, 170)) no-repeat fixed;
   color: white;
+}
+
+/** 
+ * The site layout has auto margin on the sides, which causes the page to jump to the left
+ * when the scrollbar appears (about 10-20px, the scrollbar width).
+
+ * 100vw includes the scrollbar, but 100% doesn't. If the scrollbar is active, 
+ * the left margin is set to the scrollbar width and the page remains centered.
+ */
+@media (min-width: 1200px) {
+  html {
+    margin-left: calc(100vw - 100%); /* either scrollbar width or 0 */
+    margin-right: 0;
+  }
 }
