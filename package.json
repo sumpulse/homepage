@@ -26,6 +26,7 @@
     "react-soundplayer": "^1.0.5"
   },
   "devDependencies": {
+    "@types/react": "^17.0.3",
     "gh-pages": "^3.1.0",
     "prettier": "2.2.1"
   },
