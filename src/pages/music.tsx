@@ -4,6 +4,7 @@ import FilterBar from "../components/FilterBar";
 import Layout from "../components/Layout";
 import TrackEntry from "../components/TrackEntry";
 import { tracks, trackEdits } from "../../data/tracks";
+import { covers } from "../../data/data";
 import { FilterType, Track } from "../types";
 import categories from "../../data/categories";
 import Pager from "../components/Pager";
@@ -18,6 +19,7 @@ const tracklist: Track[] = Object.keys(tracks).map((id) => {
     id: track.id,
     title: track.title,
     description: track.description,
+    coverSlug: covers[track.id].coverSlug,
     bpm: track.bpm,
     fullLengthSec: track.fullLengthSec,
     genres: track.genres,

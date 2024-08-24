@@ -9,6 +9,7 @@ export type Track = {
   id: number;
   title: string;
   description: string;
+  coverSlug: string;
   bpm: number;
   fullLengthSec: number;
   genres: string[];
